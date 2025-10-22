@@ -1,9 +1,11 @@
 {% extends './base.html' %}
 
 {% block content %}
-
+<a class="btn btn-default" href="{% url 'todo_new' %}">
+    New Todo
+ </a>
     {% for todo in todos %}
     <a href="{% url 'todo_detail' pk=todo.pk %}"> <li>{{todo.name}}</li></a>
-
+    
     {% endfor %}
 {% endblock content %}
