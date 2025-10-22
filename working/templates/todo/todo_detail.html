@@ -1,0 +1,10 @@
+{% extends './base.html' %}
+{% block content %}
+
+<p>{{todos.name}}</p>
+
+<h1>Mise à jour des fichiers statiques sur le serveur</h1>
+    
+    <p>Des serveurs comme PythonAnywhere réservent un traitement particuliers aux "fichiers statiques" (par exemple les fichiers CSS), notamment afin de les charger plus rapidement. En conséquence, à chaque fois que nos fichiers CSS changent, nous devons executer une commande pour que le serveur les mette à jour.
+         Cette commande s'appelle collectstatic.</p>
+{% endblock content %}

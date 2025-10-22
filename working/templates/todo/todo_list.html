@@ -1,0 +1,9 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+    {% for todo in todos %}
+    <a href="{% url 'todo_detail' pk=todo.pk %}"> <li>{{todo.name}}</li></a>
+
+    {% endfor %}
+{% endblock content %}
