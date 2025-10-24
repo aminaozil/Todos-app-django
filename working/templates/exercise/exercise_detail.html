@@ -1,0 +1,14 @@
+{% extends './base_exo.html' %}
+{% block content %}
+
+<p>{{exos.name}}</p>
+<p>{{exos.description}}</p>
+
+<h1>Partie Exo</h1>
+    
+    <p>Des serveurs comme PythonAnywhere réservent un traitement particuliers aux "fichiers statiques" (par exemple les fichiers CSS), notamment afin de les charger plus rapidement. En conséquence, à chaque fois que nos fichiers CSS changent, nous devons executer une commande pour que le serveur les mette à jour.
+         Cette commande s'appelle collectstatic.</p>
+         <a class="btn btn-default" href="{% url 'exercise_edit' pk=exos.pk %}">
+           edit
+        </a> 
+{% endblock content %}

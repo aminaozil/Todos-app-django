@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Todos, Exercise
-from .forms import TodoForm
+from .forms import TodoForm, ExerciseForm
 
 
 def todo_list(request):
@@ -38,3 +38,35 @@ def todo_edit(request, pk):
 def exercise_list(request):
     exos = Exercise.objects.all()
     return render(request, 'exercise/exercise_list.html',{'exos':exos})
+
+def exercise_detail(request, pk):
+    exos = get_object_or_404(Exercise, pk=pk)
+    return render(request, 'exercise/exercise_detail.html', {'exos':exos})
+
+def exercise_new(request):
+    if request.method == "POST":
+        form = ExerciseForm(request.POST)
+        if form.is_valid():
+            exo = form.save(commit=False)
+            exo.save()
+            return redirect('exercise_detail', pk = exo.pk)
+    else:
+        form = ExerciseForm()
+
+    return render(request, 'exercise/exercise_new.html', {'form':form})
+
+def exercise_edit(request, pk):
+    exo = get_object_or_404(Exercise, pk = pk)
+    if request.method == "POST":
+        form = ExerciseForm(request.POST, instance=exo)
+        if form.is_valid():
+            exo = form.save(commit=False)
+            exo.save()
+            return redirect('exercise_detail', pk = exo.pk)
+    else:
+        form = ExerciseForm(instance=exo)
+        return render(request, 'exercise/exercise_new.html', {'form':form})  
+
+
+        
+
